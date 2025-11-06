@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <header id="main-header">
     <div class="header-inner">
         <%-- 왼쪽: 로고 --%>
@@ -49,18 +49,20 @@
     
             <%-- main.css 클래스에 맞춰 로그인/로그아웃 상태 UI 수정 --%>
             <div class="user-info">
-                <c:choose>
-                    <%-- 로그인 상태가 아닐 때 --%>
-                    <c:when test="${empty user}">
-                        <a href="${pageContext.request.contextPath}/user/login.do" class="btn-login">로그인</a>
-                        <a href="${pageContext.request.contextPath}/user/register.do" class="btn-login">회원가입</a>
-                    </c:when>
-                    <%-- 로그인 상태일 때 --%>
-                    <c:otherwise>
-                        <a href="${pageContext.request.contextPath}/user/mypage.do" class="btn-logout">마이페이지</a>
-                        <a href="${pageContext.request.contextPath}/user/logout.do" class="btn-logout">로그아웃</a>
-                    </c:otherwise>
-                </c:choose>
+            	<%-- 로그인 상태가 아닐 때 --%>
+                <sec:authorize access="isAnnoymous()">
+                	<a href="${pageContext.request.contextPath}/user/login.do" class="btn-login">로그인</a>
+                    <a href="${pageContext.request.contextPath}/user/register.do" class="btn-login">회원가입</a>
+                </sec:authorize>
+                <%-- 로그인 상태일 때 --%>
+                <sec:authorize accoss="isAuthenticated()">
+					<a href="${pageContext.request.contextPath}/user/mypage.do" class="btn-logout">마이페이지</a>
+             
+             		<form action="${pageContext.request.contextPath}/user/logout.do" method="POST" style="display: inline;">
+             			<sec:csrfInput/>
+             			<button type="submit">로그아웃</button>
+             		</form>         
+                </sec:authorize>
             </div>
 
             <%-- 모바일 햄버거 버튼 --%>
@@ -82,7 +84,6 @@
         </button>
     </div>
 
-    <%-- ✅ [수정] 모바일 내비게이션 링크에 드롭다운 구조 추가 --%>
     <nav class="mobile-nav-links">
         <%-- 여행정보 드롭다운 --%>
         <div class="mobile-nav-item has-dropdown">
@@ -111,15 +112,16 @@
         <%-- 공지사항 (단일 링크) --%>
         <a href="${pageContext.request.contextPath}/list.do" class="mobile-nav-item">공지사항</a>
     </nav>
+    
     <div class="menu-footer">
         <a href="#" class="icon-link" aria-label="검색"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <c:choose>
-            <c:when test="${not empty user}">
-                <a href="${pageContext.request.contextPath}/user/mypage.do" class="icon-link profile-link" aria-label="내 프로필"><i class="fa-solid fa-user"></i></a>
-            </c:when>
-            <c:otherwise>
-                <a href="${pageContext.request.contextPath}/user/login.do" class="login-link">로그인</a>
-            </c:otherwise>
-        </c:choose>
+        
+        <sec:authorize access="isAuthenticated()">
+            <a href="${pageContext.request.contextPath}/user/mypage.do" class="icon-link profile-link" aria-label="내 프로필"><i class="fa-solid fa-user"></i></a>
+        </sec:authorize>
+        
+        <sec:authorize access="isAnonymous()">
+            <a href="${pageContext.request.contextPath}/user/login.do" class="login-link">로그인</a>
+        </sec:authorize>
     </div>
 </div>
