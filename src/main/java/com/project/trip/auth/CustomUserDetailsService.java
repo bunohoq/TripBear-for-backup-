@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.project.trip.mapper.MemberMapper;
+import com.project.trip.allplace.mapper.MemberMapper;
 import com.project.trip.model.CustomUser;
 import com.project.trip.model.UserDTO;
 
