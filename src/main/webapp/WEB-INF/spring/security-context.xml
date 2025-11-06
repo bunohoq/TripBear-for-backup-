@@ -8,10 +8,10 @@
 	<!--  스프링 시큐리티의 모든 설정 security-context.xml  -->
 	
 	<!-- 403 핸들러 -->
-	<bean id="customAccessDeniedHandler" class="com.test.project.auth.CustomAccessDeniedHandler"></bean>
+	<bean id="customAccessDeniedHandler" class="com.project.trip.auth.CustomAccessDeniedHandler"></bean>
 	
 	<!-- 로그인 성공 핸들러  -->
-	<bean id="customLoginSuccessHandler" class="com.test.project.auth.CustomLoginSuccessHandler"></bean>
+	<bean id="customLoginSuccessHandler" class="com.project.trip.auth.CustomLoginSuccessHandler"></bean>
 	
 	
 	<!-- 14.PasswordEncoder 빈 만들기(정식)  
@@ -20,7 +20,7 @@
 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	
 	<!-- 18. 로그인 처리 인증정보관리  -->
-	<bean id="customUserDetailsService" class="com.test.project.auth.CustomUserDetailsService"></bean>
+	<bean id="customUserDetailsService" class="com.project.trip.auth.CustomUserDetailsService"></bean>
 	
 	<security:http>
 		
