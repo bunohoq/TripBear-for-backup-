@@ -12,10 +12,13 @@
 	</typeAliases>
  -->
  	<typeAliases>
- 		<typeAlias type="com.project.trip.allplace.model.KeywordLinkDTO" alias="kldto"/>
- 		<typeAlias type="com.project.trip.allplace.model.PlaceDTO" alias="pdto"/>
- 		<typeAlias type="com.project.trip.allplace.model.TouristSpotDTO" alias="tsdto"/>
- 		<typeAlias type="com.project.trip.board.review.model.ReviewDTO" alias="rdto"/>
+ 		<typeAlias type="com.project.trip.allplace.model.KeywordLinkDTO" alias="keywordlinkdto"/>
+ 		<typeAlias type="com.project.trip.allplace.model.PlaceDTO" alias="placedto"/>
+ 		<typeAlias type="com.project.trip.allplace.model.TouristSpotDTO" alias="touristspotdto"/>
+ 		<typeAlias type="com.project.trip.board.review.model.ReviewDTO" alias="reviewdto"/>
+ 		<typeAlias type="com.project.trip.reservation.model.AccomReservationDTO" alias="accomreservationdto" />
+ 		<typeAlias type="com.project.trip.reservation.model.ReservationDTO" alias="reservationdto" />
+ 		<typeAlias type="com.project.trip.reservation.model.CarReservationDTO" alias="carreservationdto" />
  	</typeAliases>
  
 </configuration>

@@ -2,6 +2,11 @@ package com.project.trip.allplace.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
+import java.sql.Connection;
+
+import javax.sql.DataSource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +33,27 @@ public class TestApiService {
 
 	@Autowired
 	private AllPlaceService allPlaceService;
+	
+	@Autowired
+    private DataSource dataSource; // DB 커넥션 풀 주입
+	
+	@Test
+    public void testDatabaseConnection() {
+        // dataSource 자체가 주입되었는지 확인
+        assertNotNull("DataSource가 null입니다. root-context.xml 설정을 확인하세요.", dataSource);
+        System.out.println(">>> DataSource Bean Injection Success! <<<");
+        System.out.println(dataSource);
+
+        // 실제 DB 커넥션을 가져와 봅니다. (가장 중요)
+        try (Connection conn = dataSource.getConnection()) {
+            assertNotNull("DB 커넥션 가져오기 실패", conn);
+            System.out.println(">>> DB Connection Success! <<<");
+            System.out.println(conn);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail("DB 연결 실패 (Wallet 경로/권한 문제 또는 DB 설정 오류): " + e.getMessage());
+        }
+    }
 	
 	private final String TEST_CONTENT_ID = "126508";
 	
