@@ -5,17 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * TourAPI의 중첩된 JSON 응답 구조를 통째로 받기 위한 래퍼(Wrapper) DTO
- * * { "response": {
- * "body": {
- * "items": {
- * "item": { ... TourItemVO ... }
- * }
- * }
- * }
- * }
- */
 @Data
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)

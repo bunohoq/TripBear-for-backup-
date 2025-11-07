@@ -4,12 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /*
  	TourAPI 응답 JSON의 "item" 객체 (장소 1개 정보)
  */
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true) // API가 주는 수많은 필드 중, 여기서 정의한 것 외에는 무시
 public class TourItemVO {

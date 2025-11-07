@@ -34,7 +34,7 @@
 		<property name="configLocation" value="classpath:config/mybatis-config.xml"/>
 	</bean>
 
-	<mybatis-spring:scan base-package="com.project.trip.mapper"/>
+	<mybatis-spring:scan base-package="com.project.trip.allplace.mapper"/>
 	
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
 
