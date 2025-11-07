@@ -6,7 +6,7 @@
 <mapper namespace="com.project.trip.reservation.mapper.ReservationMapper">
 
     <!-- 통합예약 INSERT: reservationId를 selectKey로 미리 뽑아 DTO에 주입 -->
-    <insert id="insertReservation" parameterType="com.project.trip.reservation.model.ReservationDTO">
+    <insert id="insertReservation" parameterType="reservationdto">
         <selectKey keyProperty="reservationId" resultType="long" order="BEFORE">
             SELECT seqReservation.NEXTVAL FROM dual
         </selectKey>
@@ -32,7 +32,7 @@
     </insert>
 
     <!-- 객실예약 INSERT (필수) -->
-    <insert id="insertAccomReservation" parameterType="com.project.trip.reservation.dto.AccomReservationDTO">
+    <insert id="insertAccomReservation" parameterType="accomreservationdto">
         <selectKey keyProperty="accomReservationId" resultType="long" order="BEFORE">
             SELECT seqAccomReservation.NEXTVAL FROM dual
         </selectKey>
@@ -63,7 +63,7 @@
     </insert>
 
     <!-- 차량예약 INSERT (선택) -->
-    <insert id="insertCarReservation" parameterType="com.trip.reservation.dto.CarReservationDTO">
+    <insert id="insertCarReservation" parameterType="carreservationdto">
         <selectKey keyProperty="carReservationId" resultType="long" order="BEFORE">
             SELECT seqCarReservation.NEXTVAL FROM dual
         </selectKey>
