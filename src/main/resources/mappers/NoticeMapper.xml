@@ -31,7 +31,8 @@
 			notice_header, 
 			admin_id, 
 			notice_regdate, 
-			notice_view_count
+			notice_view_count,
+			notice_content
 		from tblNoticepost
 			where notice_post_id = #{noticePostId}
 	</select>
